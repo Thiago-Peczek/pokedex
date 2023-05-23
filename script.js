@@ -1,4 +1,4 @@
-let pokemon = 1001;
+let pokemon = 1;
 const pokemonName = document.querySelector(".pokemon_name")
 const pokemonNumber = document.querySelector(".pokemon_number");
 const pokemonImage = document.querySelector(".pokemon_image")
@@ -44,4 +44,21 @@ const renderPokemon = async (pokemonResp) => {
     }
 }
 
-renderPokemon(pokemon)
+bottonPrev.addEventListener("click", ()=>{
+    if(pokemon > 1){
+        pokemon-=1;
+        renderPokemon(pokemon);
+    }
+});
+
+bottonNext.addEventListener("click", ()=>{
+    pokemon+=1;
+    renderPokemon(pokemon);
+});
+
+form.addEventListener("submit", (evento)=>{
+    evento.preventDefault();
+    renderPokemon(input.value.toLowerCase())
+})
+
+renderPokemon(pokemon);
